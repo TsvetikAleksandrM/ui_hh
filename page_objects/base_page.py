@@ -57,17 +57,6 @@ class BasePage(object):
         logger.info(f"Click Button: {button_text}")
         element.click()
 
-    def click_button_visibility(self, locator, button_text):
-        """
-        Кликнуть по кнопке
-        :param locator: локатор
-        :param button_text: кнопка для клика
-        :return:
-        """
-        element = self.check_element_visibility(locator, button_text)
-        logger.info(f"Click Button {button_text}")
-        element.click()
-
     def textbox_input(self, locator, value, textbox_text):
         """
         Вводим данные в поле ввода
