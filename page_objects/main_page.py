@@ -19,13 +19,17 @@ class MainPage(BasePage):
         with allure.step("Главная страница hh.ru"):
             allure.attach(self.do_screenshot(), "Главная страница hh.ru", attachment_type=AT.PNG)
             self.check_element_visibility(self.main_locators.textbox_profession, "Поле ввода 'Профессия, должность или компания'")
-            self.check_element_visibility(self.main_locators.button_find_job, "Кнопка 'Найти работу'")
+            self.check_element_visibility(self.main_locators.button_search, "Кнопка 'Найти'")
+
+    def close_message(self):
+        with allure.step("Закрыть всплывающее сообщение о регионе"):
+            self.click_button(self.main_locators.button_close_message, "Кнопка 'Закрыть' сообщение о регионе")
 
     def input_work(self, email):
         with step("Ввод текста в поле 'Профессия, должность или компания'"):
             self.textbox_input(self.main_locators.textbox_profession, email, "Поле ввода 'email'")
             allure.attach(json.dumps(email, ensure_ascii=False), 'Ввод текста')
 
-    def click_find_job(self):
-        with step("Нажатие кнопки 'Найти работу'"):
-            self.click_button(self.main_locators.button_find_job, "Найти работу")
+    def click_search_vacancy(self):
+        with step("Кликнуть по кнопке 'Найти'"):
+            self.click_button(self.main_locators.button_search, "Найти")

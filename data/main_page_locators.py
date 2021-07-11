@@ -5,7 +5,10 @@ class MainPageLocators:
     """
     Локаторы главной страницы 'hh.ru'
     """
-    # Кнопка 'Найти работу'
-    button_find_job = (By.CLASS_NAME, "supernova-search-submit-text")
+
+    # Кнопка 'Закрыть' сообщение о регионе
+    button_close_message = (By.XPATH, "//div[@class='Bloko-Notification-Close bloko-notification__close']/span")
     # Поле ввода 'Профессия, должность или компания'
-    textbox_profession = (By.XPATH, "//input[contains(@class,'bloko-input HH-Supernova')]")
+    textbox_profession = (By.XPATH, "//input[@placeholder='Профессия, должность или компания']")
+    # Кнопка 'Найти'
+    button_search = (By.CLASS_NAME, "//span[text()='Найти работу']")

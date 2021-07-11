@@ -90,6 +90,7 @@ class BasePage(object):
     def get_current_url(self):
         """
         Получить текущий URL
+        :return: полученный url
         """
         logger.info("Get current url")
         return self.driver.current_url
