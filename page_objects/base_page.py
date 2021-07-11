@@ -23,8 +23,8 @@ class BasePage(object):
         """
         logger.info(f"Open URL: {url}")
         self.driver.get(url)
-        assert self.driver.find_elements_by_xpath(
-            "//input[contains(@class,'bloko-input HH-Supernova')]").__len__() == 1, f"Страница {url} не открылась."
+        current_url = self.get_current_url()
+        assert current_url == "https://hh.ru/", "Страница не загрузилась'"
 
     def check_element_visibility(self, locator, text):
         """
@@ -86,5 +86,12 @@ class BasePage(object):
         """
         logger.info(f"Switch to new tab")
         self.driver.switch_to.window(self.driver.window_handles[-1])
+
+    def get_current_url(self):
+        """
+        Получить текущий URL
+        """
+        logger.info("Get current url")
+        return self.driver.current_url
 
 
