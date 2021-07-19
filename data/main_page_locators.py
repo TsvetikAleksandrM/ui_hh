@@ -11,4 +11,4 @@ class MainPageLocators:
     # Поле ввода 'Профессия, должность или компания'
     textbox_profession = (By.XPATH, "//input[@placeholder='Профессия, должность или компания']")
     # Кнопка 'Найти'
-    button_search = (By.CLASS_NAME, "//span[text()='Найти работу']")
+    button_search = (By.XPATH, "//span[text()='Найти работу']")
