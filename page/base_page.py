@@ -21,10 +21,10 @@ class BasePage(object):
         :param url: url ресурса
         :return:
         """
-        logger.info(f"Open URL: {url}")
+        logger.info(f"Открыть URL: {url}")
         self.driver.get(url)
         current_url = self.get_current_url()
-        assert current_url == "https://hh.ru/", "Страница не загрузилась'"
+        assert current_url == url, f"Страница {url} не загрузилась"
 
     def check_element_visibility(self, locator, text):
         """
@@ -33,7 +33,7 @@ class BasePage(object):
         :param text: название элемента
         :return: элемент
         """
-        logger.info(f" The page displays: {text}")
+        logger.info(f"Проверка на видимость: {text}")
         return WebDriverWait(self.driver, self.timeout).until(EC.visibility_of_element_located(locator))
 
     def check_element_clickable(self, locator, text):
@@ -43,7 +43,7 @@ class BasePage(object):
         :param text: название элемента
         :return: элемент
         """
-        logger.info(f" The page displays: {text}")
+        logger.info(f"Проверка на видимость и кликабельность: {text}")
         return WebDriverWait(self.driver, self.timeout).until(EC.element_to_be_clickable(locator))
 
     def click_button(self, locator, button_text):
@@ -54,7 +54,7 @@ class BasePage(object):
         :return:
         """
         element = self.check_element_clickable(locator, button_text)
-        logger.info(f"Click Button: {button_text}")
+        logger.info(f"Кликнуть по кнопке: {button_text}")
         element.click()
 
     def textbox_input(self, locator, value, textbox_text):
@@ -66,7 +66,7 @@ class BasePage(object):
         :return:
         """
         textbox = self.check_element_clickable(locator, textbox_text)
-        logger.info(f"Click textbox: {textbox_text} and enter value {value}")
+        logger.info(f"Кликнуть по {textbox_text} и ввести значение '{value}'")
         textbox.click()
         textbox.clear()
         textbox.send_keys(value)
@@ -76,15 +76,14 @@ class BasePage(object):
         Делаем скриншот страницы
         :return: скриншот
         """
-        img = self.driver.get_screenshot_as_png()
-        return img
+        return self.driver.get_screenshot_as_png()
 
     def switch_to_new_tab(self):
         """
         Переключиться на новую вкладку
         :return:
         """
-        logger.info(f"Switch to new tab")
+        logger.info(f"Переключиться на новую вкладку")
         self.driver.switch_to.window(self.driver.window_handles[-1])
 
     def get_current_url(self):
@@ -92,7 +91,5 @@ class BasePage(object):
         Получить текущий URL
         :return: полученный url
         """
-        logger.info("Get current url")
+        logger.info("Получить текущий URL")
         return self.driver.current_url
-
-

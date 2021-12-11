@@ -1,17 +1,17 @@
 import allure
 import pytest
-from storing_tests.vacancy import Vacancy
+from storing_tests.vacancy_storing import VacancyStoring
+from storing_tests.vacancy_profile_storing import VacancyProfileStoring
 
 
 @pytest.mark.ui
-@allure.title("Отображение интерфейса на странице 'Вакансии'")
-@allure.story("Отображение интерфейса на странице 'Вакансии'")
-def test_interface_vacancy(driver):
-    Vacancy(driver).interface_vacancy()
+@allure.story('Проверка интерфейса')
+class TestDoRegisterPassword:
 
+    @allure.title("Проверка интерфейса страницы 'Вакансии'")
+    def test_interface_vacancy(self, driver):
+        VacancyStoring(driver).interface_vacancy()
 
-@pytest.mark.ui
-@allure.title("Отображение интерфейса на странице 'Профиль вакансии'")
-@allure.story("Отображение интерфейса на странице 'Профиль вакансии'")
-def test_interface_vacancy_profile(driver):
-    Vacancy(driver).interface_vacancy_profile()
+    @allure.title("Проверка интерфейса страницы 'Профиль вакансии'")
+    def test_interface_vacancy_profile(self, driver):
+        VacancyProfileStoring(driver).interface_vacancy_profile()

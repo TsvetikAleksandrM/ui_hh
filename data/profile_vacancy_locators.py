@@ -7,6 +7,6 @@ class VacancyProfileLocators:
     """
 
     # Кнопка 'Откликнуться'
-    button_filters = (By.XPATH, "//a[contains(@class,'bloko-button bloko-button_secon')]/span[text()='Откликнуться']")
+    button_filters = (By.XPATH, "//div[@class='vacancy-action vacancy-action_full-size']//span[text()='Откликнуться']")
     # Кнопка 'Звёздочка'
     button_by_conformity = (By.CLASS_NAME, "bloko-button__icon")
